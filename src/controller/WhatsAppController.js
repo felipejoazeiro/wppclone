@@ -1,4 +1,8 @@
-class WhatsAppController {
+import {Format} from './../util/Format'
+import {CameraController} from './../controller/cameraController'
+
+
+export class WhatsAppController {
     constructor(){
         console.log('WhatsAppController')
 
@@ -131,10 +135,13 @@ class WhatsAppController {
             this.el.panelCamera.css({
                     'height': '100%'
                 });
+
+            this._camera = new CameraController(this.el.videoCamera)
         })
         this.el.btnClosePanelCamera.on('click',e=>{
             this.closeAllMainPanel()
             this.el.panelMessagesContainer.show()
+            this._camera.stop()
         })
         this.el.btnTakePicture.on('click',e=>{
             console.log('take picture')
