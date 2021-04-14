@@ -1,3 +1,5 @@
+const path = require('path')
+
 export class DocumentPreviewController{
     constructor(file){
         this._file = file
