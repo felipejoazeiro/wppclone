@@ -1,0 +1,37 @@
+import firebase from 'firebase'
+import 'firebase/auth'
+import 'firebase/firestore'
+
+export class Firebase{
+    constructor(){
+
+        this._config = {
+            apiKey: "AIzaSyAmJ9uJSQwev2mS38WOInPPkGojqlgl0PA",
+            authDomain: "whatsapp-clone-a1f92.firebaseapp.com",
+            projectId: "whatsapp-clone-a1f92",
+            storageBucket: "whatsapp-clone-a1f92.appspot.com",
+            messagingSenderId: "805337863828",
+            appId: "1:805337863828:web:06782930ac067e793dc681",
+            measurementId: "G-P7QJQ18RBL"
+        }
+        this.init()
+    }
+    init(){
+        if(!this._initialized){
+            firebase.initializeApp(this._config);
+            firebase.firestore().settings({
+                timestampsInSnapshots: true
+            })
+            this._initialized = true
+        }
+        
+    }
+    static db(){
+        return firebase.firestore()
+    }
+
+    static hd(){
+        return firebase.storage()
+    }
+    
+}
